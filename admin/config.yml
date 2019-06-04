@@ -9,8 +9,8 @@ collections:
     label: 'Posts'
     folder: '_posts/'
     fields:
-      - { name: Title }
-      - { name: Layout }
-      - { name: Author }
-      - { name: Categories }
-      - { name: Image }
+      - { name: "Title", widget: "string" }
+      - { name: "Layout", widget: "string" }
+      - { name: "Author", widget: "string" }
+      - { name: "Categories", widget: "string" }
+      - { name: "Image", widget: "Image" }
