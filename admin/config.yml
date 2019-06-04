@@ -7,6 +7,7 @@ media_folder: 'assets/images'
 collections:
   - name: 'Posts'
     label: 'Posts'
+    extension: 'md'
     folder: '_posts/'
     fields:
       - { name: "Title", widget: "string" }
