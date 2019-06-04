@@ -10,9 +10,9 @@ collections:
     extension: 'md'
     folder: '_posts/'
     fields:
-      - { name: "Title", widget: "string" }
-      - { name: "Layout", widget: "string" }
-      - { name: "Author", widget: "string" }
-      - { name: "Categories", widget: "string" }
-      - { name: "Image", widget: "Image" }
+      - { label: "Title", name: 'title', widget: "string" }
+      - { label: "Layout", name: 'layout',  widget: "string" }
+      - { label: "Author",  name: 'author', widget: "string" }
+      - { label: "Categories",  name: 'categories', widget: "string" }
+      - { label: "Image",  name: 'image', widget: "image" }
       - { label: 'Blog post content', name: 'body', widget: 'markdown'}
