@@ -10,3 +10,7 @@ collections:
     folder: '_posts/'
     fields:
       - { name: Title }
+      - { name: Layout }
+      - { name: Author }
+      - { name: Categories }
+      - { name: Image }
