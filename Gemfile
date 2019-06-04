@@ -6,7 +6,7 @@ source "https://rubygems.org"
 #
 #     bundle exec jekyll serve
 #
-
+gem 'github-pages'
 # If you have any plugins, put them here!
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 group :jekyll_plugins do
@@ -15,7 +15,7 @@ group :jekyll_plugins do
     gem 'jekyll-paginate'
     gem 'jekyll-seo-tag'
     gem 'jekyll-archives'
-    gem 'jekyll-admin', group: :jekyll_plugins
+    gem 'jekyll-admin'
     gem 'kramdown'
     gem 'rouge'
 end
