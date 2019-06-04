@@ -15,3 +15,4 @@ collections:
       - { name: "Author", widget: "string" }
       - { name: "Categories", widget: "string" }
       - { name: "Image", widget: "Image" }
+      - { label: 'Blog post content', name: 'body', widget: 'markdown'}
