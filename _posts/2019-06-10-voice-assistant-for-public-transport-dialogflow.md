@@ -4,7 +4,7 @@ title: "Creating a voice assistant for public transport"
 author: bert
 categories: [ tutorial ]
 tags: [google home, google assistant, sl, resrobot]
-image: assets/images/2019-06-10-voice-assistants.jpg
+image: assets/images/2019-06-10-voice-assistants.png
 description: "Hey Google, when does the next train leave from Stockholm? Building your own Google Assistant app with dialogflow"
 featured: true
 hidden: true
