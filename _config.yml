@@ -1,7 +1,7 @@
 # Site
-name: "Mediumish"
-title: "Mediumish"
-description: "Jekyll template, Medium styled, free for bloggers."
+name: "Trafiklab"
+title: "Trafiklab"
+description: "Trafiklab blog. Together we make public transportation smarter"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
 baseurl: ''
@@ -30,6 +30,15 @@ authors:
     web: https://www.wowthemes.net
     twitter: https://twitter.com/wowthemesnet
     description: "This is the author box. Write a short description of the author here. You are currently previewing Mediumish demo, a Jekyll template compatible with Github pages."
+  bert:
+    name: Bert
+    display_name: Bert
+    avatar: 'assets/images/avatar.png'
+    gravatar: ee27e112c3ea88e232c405764afec43f
+    email: bert@trafiklab.se
+    web: https://blog.trafiklab.se
+    twitter: https://twitter.com/bertmarcelis
+    description: "Systems engineer and open data expert at Samtrafiken, creating better public transport through open-source and open data."
 
 # Plugins
 plugins:
