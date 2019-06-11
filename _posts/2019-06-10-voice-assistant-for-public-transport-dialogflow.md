@@ -9,8 +9,6 @@ description: "Hey Google, when does the next train leave from Stockholm? Buildin
 featured: true
 hidden: true
 ---
-[Caption image courtesy of Techcrunch](https://techcrunch.com/2017/11/22/snips-lets-you-build-your-own-voice-assistant-to-embed-into-your-devices/)
-
 Most of us have experienced this before.
 You wake up in the morning, eat some breakfast, get dressed and run out of the door to catch a train or bus. 
 Only to find out it is cancelled, or there are major delays.
@@ -21,6 +19,7 @@ Today we will create our own voice assistant app to provide us with real-time tr
 
 Example code is written in PHP, but any language works. All frameworks are free. No (credit) card is required for sign-up.
 
+ [Featured image courtesy of Techcrunch](https://techcrunch.com/2017/11/22/snips-lets-you-build-your-own-voice-assistant-to-embed-into-your-devices/)
 ## I'm sorry, could you repeat that?
 Language is hard. The first challenge when creating a (voice) assistant is understanding users, by both recognizing 
 *what they say*, and figuring out *what they mean*. Luckily we don't need to solve this problem entirely by ourselves. 
@@ -106,10 +105,16 @@ parameters which were extracted is sent as JSON data in the request body. The se
 which will then be passed back to the digital assistant. You can see the entire process in the image below.
 
 ![The dialogflow process]({{ site.baseurl }}/assets/images/2019-06-10-dialogflow-process.png)
+
+In order to enable fulfillment, head over to the fulfillment page on DialogFlow by clicking _fulfillment_ in the left sidebar.
+Switch the slider to enabled, and enter the address of your server app here. You can also use the inline editor to write your fulfillment code in NodeJS on Firebase cloud functions.
+If you don't have any URL just now, and you don't want to use the built-in editor, you can come back to this step later on when your fulfillment server is ready.
  
- You can find an example Dialogflow request and response in the V2 format below. [The full documentation is available on the Dialogflow website](https://dialogflow.com/docs/fulfillment/how-it-works).
+In order to be able to code a fulfillment application, we need to know the request and response format.
+[This format is explained fully on the dialogflow website](https://dialogflow.com/docs/fulfillment/how-it-works).
+You can find an example Dialogflow request and response in the V2 format below.
  
- Headers:
+Headers:
  ```
  POST https://my-service.com/action
  
@@ -117,7 +122,7 @@ which will then be passed back to the digital assistant. You can see the entire 
  //user defined headers
  Content-type: application/json
 ```
- Request Body:
+Request Body:
 ```json 
  {
    "responseId": "ea3d77e8-ae27-41a4-9e1d-174bd461b68c",
@@ -216,6 +221,47 @@ Response body:
   }
 }
 ```
- 
- Details on setting up fulfillment using Firebase, Google cloud, or using NodeJS libraries can be found in [the dialogflow docs](https://dialogflow.com/docs/fulfillment/configure).
- 
+More details on setting up fulfillment using Firebase, Google cloud, or using NodeJS libraries can be found in 
+[the dialogflow docs](https://dialogflow.com/docs/fulfillment/configure).
+
+### Putting it to the test
+
+## Creating a custom fulfillment server application
+
+We now know the request format, and how our response should look like. In order to be able to anwer, we will use the [trafiklab](https://trafiklab.se)
+APIs. Depending on which features we want to implement, there are two or three types of API requests which we will use:
+- Station lookups: The station name, passed as a parameter by DialogFlow, needs to be converted to an ID so we can specify which station we mean
+when talking to other APIs.
+- Departure boards: A departures API gives information about the next departures from a given stop location.
+- Routeplanning: If you want to create an extra intent that handles routeplanning, you will need an API like this to quickly provide you with a response.
+
+The following table shows which API can be used for each purpose, depending on the region for which you want to get information.
+
+|                  | Sweden                     | Stockholm             |
+|------------------|----------------------------|-----------------------|
+| Station lookup   | ResRobot Reseplanerare     | SL Platsuppslag       |    
+| Departure boards | ResRobot Stolptidstabeller | SL Realtid 4          |    
+| Routeplanning    | ResRobot Reseplanerare     | SL Reseplanerare 3.1  |    
+  
+\* ResRobot also works in Stockholm, but the SL APIs might offer better accuracy and realtime data. \
+\** API versions are the latest at time of writing. Future versions will be just as suited for this. 
+
+### The easy way
+If you're using PHP, you're lucky! We developed open-source SDKs which offer those 3 features, both for the ResRobot and SL APIs.
+They are interchangeable, meaning your code doesn't need any modification to change the data source. They are also updated when APIs
+are updated, meaning you don't get breaking changes in your code.
+
+The SDKs can be found at Github:
+- ResRobot: https://github.com/trafiklab/resrobot-php-sdk
+- SL: https://github.com/trafiklab/sl-php-sdk
+
+Installation is as easy as `composer require trafiklab/resrobot-php-sdk` or `composer require trafiklab/sl-php-sdk`.
+
+For an example on how these are used, you can look at the readme docs, or in [our Google Assistant demo project](https://github.com/trafiklab/google-assistant-demo/blob/master/app/Http/Controllers/NextDepartureController.php#L62).
+
+### Consuming the APIs in your own programming language
+Unfortunately our SDKs are only available in PHP right now, but let us know if you want to see them in an other language! 
+Luckily, using the APIs isn't too hard. All the documentation can be found on [trafiklab](https://trafiklab.se). The 
+table above contains direct links to the specific API documentation. You can still use the source code of our SDKs to see 
+which parameters we send to the APIs and which fields we parse. If you get stuck, you can always reach out to Trafiklab [using
+the Kundo forum](https://kundo.se/org/trafiklabse/).
