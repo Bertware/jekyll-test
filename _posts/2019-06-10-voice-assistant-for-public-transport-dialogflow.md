@@ -96,3 +96,126 @@ If either the location or transportation method aren't present, the user will re
 ### Fulfillment
 
 While we now have an agent that can understand what users want, it still doesn't know what to answer. This is where fulfillment comes in.
+
+> Fulfillment is code that's deployed as a webhook that lets your Dialogflow agent call business logic on an intent-by-intent basis. 
+> During a conversation, fulfillment allows you to use the information extracted by Dialogflow's natural language processing to generate 
+> dynamic responses or trigger actions on your back-end.
+
+Whenever your intent is called, dialogflow will send an HTTP POST request to a URL of your choosing. Information about the intent which was used and the
+parameters which were extracted is sent as JSON data in the request body. The server application now needs to process this data and formulate a response,
+which will then be passed back to the digital assistant. You can see the entire process in the image below.
+
+![The dialogflow process]({{ site.baseurl }}/assets/images/2019-06-10-dialogflow-process.png)
+ 
+ You can find an example Dialogflow request and response in the V2 format below. [The full documentation is available on the Dialogflow website](https://dialogflow.com/docs/fulfillment/how-it-works).
+ 
+ Headers:
+ ```
+ POST https://my-service.com/action
+ 
+ Headers:
+ //user defined headers
+ Content-type: application/json
+```
+ Request Body:
+```json 
+ {
+   "responseId": "ea3d77e8-ae27-41a4-9e1d-174bd461b68c",
+   "session": "projects/your-agents-project-id/agent/sessions/88d13aa8-2999-4f71-b233-39cbf3a824a0",
+   "queryResult": {
+     "queryText": "user's original query to your agent",
+     "parameters": {
+       "param": "param value"
+     },
+     "allRequiredParamsPresent": true,
+     "fulfillmentText": "Text defined in Dialogflow's console for the intent that was matched",
+     "fulfillmentMessages": [
+       {
+         "text": {
+           "text": [
+             "Text defined in Dialogflow's console for the intent that was matched"
+           ]
+         }
+       }
+     ],
+     "outputContexts": [
+       {
+         "name": "projects/your-agents-project-id/agent/sessions/88d13aa8-2999-4f71-b233-39cbf3a824a0/contexts/generic",
+         "lifespanCount": 5,
+         "parameters": {
+           "param": "param value"
+         }
+       }
+     ],
+     "intent": {
+       "name": "projects/your-agents-project-id/agent/intents/29bcd7f8-f717-4261-a8fd-2d3e451b8af8",
+       "displayName": "Matched Intent Name"
+     },
+     "intentDetectionConfidence": 1,
+     "diagnosticInfo": {},
+     "languageCode": "en"
+   },
+   "originalDetectIntentRequest": {}
+ }
+```
+Response body:
+```json 
+{
+  "fulfillmentText": "This is a text response",
+  "fulfillmentMessages": [
+    {
+      "card": {
+        "title": "card title",
+        "subtitle": "card text",
+        "imageUri": "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png",
+        "buttons": [
+          {
+            "text": "button text",
+            "postback": "https://assistant.google.com/"
+          }
+        ]
+      }
+    }
+  ],
+  "source": "example.com",
+  "payload": {
+    "google": {
+      "expectUserResponse": true,
+      "richResponse": {
+        "items": [
+          {
+            "simpleResponse": {
+              "textToSpeech": "this is a simple response"
+            }
+          }
+        ]
+      }
+    },
+    "facebook": {
+      "text": "Hello, Facebook!"
+    },
+    "slack": {
+      "text": "This is a text response for Slack."
+    }
+  },
+  "outputContexts": [
+    {
+      "name": "projects/${PROJECT_ID}/agent/sessions/${SESSION_ID}/contexts/context name",
+      "lifespanCount": 5,
+      "parameters": {
+        "param": "param value"
+      }
+    }
+  ],
+  "followupEventInput": {
+    "name": "event name",
+    "languageCode": "en-US",
+    "parameters": {
+      "param": "param value"
+    }
+  }
+}
+```
+ 
+ Details on setting up fulfillment using Firebase, Google cloud, or using NodeJS libraries can be found in [the dialogflow docs](https://dialogflow.com/docs/fulfillment/configure).
+ 
