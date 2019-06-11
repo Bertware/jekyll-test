@@ -1,7 +1,7 @@
 # Site
 name: "Trafiklab"
 title: "Trafiklab"
-description: "Trafiklab blog. Together we make public transportation smarter"
+description: "Together we make public transportation smarter"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
 baseurl: ''
