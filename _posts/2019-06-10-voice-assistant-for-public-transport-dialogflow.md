@@ -237,13 +237,14 @@ when talking to other APIs.
 
 The following table shows which API can be used for each purpose, depending on the region for which you want to get information.
 
-|                  | Sweden                     | Stockholm             |
-|------------------|----------------------------|-----------------------|
-| Station lookup   | ResRobot Reseplanerare     | SL Platsuppslag       |    
-| Departure boards | ResRobot Stolptidstabeller | SL Realtid 4          |    
-| Routeplanning    | ResRobot Reseplanerare     | SL Reseplanerare 3.1  |    
+|                  | Sweden                                                                                     | Stockholm                                                                                  |
+|------------------|--------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| Station lookup   | [ResRobot Reseplanerare](https://www.trafiklab.se/api/resrobot-reseplanerare/platsuppslag) | [SL Platsuppslag](https://www.trafiklab.se/api/sl-platsuppslag)                            |    
+| Departure boards | [ResRobot Stolptidstabeller 2](https://www.trafiklab.se/api/resrobot-stolptidtabeller-2)   | [SL Realtidsinformation 4](https://www.trafiklab.se/api/sl-realtidsinformation-4)          |    
+| Routeplanning    | [ResRobot Reseplanerare](https://www.trafiklab.se/api/resrobot-reseplanerare/sok-resa)     | [SL Reseplanerare 3.1](https://www.trafiklab.se/api/sl-reseplanerare-31)                   |    
   
-\* ResRobot also works in Stockholm, but the SL APIs might offer better accuracy and realtime data. \
+\* ResRobot also works in Stockholm, but the SL APIs might offer better accuracy and realtime data.
+
 \** API versions are the latest at time of writing. Future versions will be just as suited for this. 
 
 ### The easy way
