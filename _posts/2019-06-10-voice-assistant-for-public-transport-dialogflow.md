@@ -5,9 +5,9 @@ author: bert
 categories: [ tutorial ]
 tags: [google home, google assistant, sl, resrobot]
 image: assets/images/2019-06-10-voice-assistants.png
-description: "Hey Google, when does the next train leave from Stockholm? Building your own Google Assistant app with dialogflow"
+description: "Hey Google, when does the next train leave from Stockholm? Building your own Google Assistant app with dialogflow."
 featured: true
-hidden: true
+hidden: false
 ---
 Most of us have experienced this before.
 You wake up in the morning, eat some breakfast, get dressed and run out of the door to catch a train or bus. 
@@ -266,3 +266,10 @@ Luckily, using the APIs isn't too hard. All the documentation can be found on [t
 table above contains direct links to the specific API documentation. You can still use the source code of our SDKs to see 
 which parameters we send to the APIs and which fields we parse. If you get stuck, you can always reach out to Trafiklab [using
 the Kundo forum](https://kundo.se/org/trafiklabse/).
+
+## Putting it all online
+As DialogFlow needs to send an HTTP request to your server application, your server application needs to be accessible from the internet, either 
+with a static IP address or a domain name.
+
+- You can deploy through Heroku, which offers a free-tier with unlimited duration. See [our tutorial on Heroku](/heroku-free-hosting-with-automatic-deploy) to learn how to set it up.
+- You can host the application on a server or VPS, for example on DigitalOcean
