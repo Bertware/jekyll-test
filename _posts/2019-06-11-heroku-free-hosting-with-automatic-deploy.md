@@ -73,7 +73,9 @@ Your project will now deploy automatically when the master branch is updated! Wo
 
 Create a new config var. Use `APP_NAME` as name, and a value of your choosing as value. These environment variables will be set in the dyno,
 and take effect immediately. They are typically used for API keys and other variables. These environment variables correspond with the export command in bash,
+.env file in PHP, ...
 
+The screenshot below shows how the app is completely configured, but only the app name is required when setting it up in our Hello World example.
 ![Setting environment variables]({{ site.baseurl }}/assets/images/2019-06-11-heroku-settings.png)
 
 ### 5. Access your app
