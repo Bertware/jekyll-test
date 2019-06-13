@@ -27,6 +27,11 @@ License: https://www.wowthemes.net/freebies-license/
     padding: 1rem 0rem;
 }
 
+.mainheading h1 {
+    font-family: Raleway;
+    text-transform: uppercase;
+}
+
 a {
     color: #00ab6b;
     transition: all 0.2s;
