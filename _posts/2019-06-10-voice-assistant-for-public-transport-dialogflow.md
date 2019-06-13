@@ -223,8 +223,19 @@ Response body:
 ```
 More details on setting up fulfillment using Firebase, Google cloud, or using NodeJS libraries can be found in 
 [the dialogflow docs](https://dialogflow.com/docs/fulfillment/configure).
+If you want more information on specific Google Assistant replies, you can use 
+[the Google Assistant documentation](https://developers.google.com/actions/assistant/responses#json)
 
 ### Putting it to the test
+
+## Importing an existing agent
+We created a demo project consisting of a DialogFlow agent and a fulfillment server application.
+The DialogFlow project has been exported to a zip file, and can be downloaded and imported to your own DialogFlow project. 
+In order to do this, you need to create a new agent first. After creating a new agent, you click the gear wheal in the top left, next to your agent name.
+
+![Dialogflow agent settings]({{ site.baseurl }}/assets/images/2019-06-10-dialogflow-settings.png)
+
+After going to the settings, choose the Export and Import tab. Choose Restore from zip to clone the project from the zip file. Read the dialogflow docs for more information.
 
 ## Creating a custom fulfillment server application
 
@@ -253,8 +264,8 @@ They are interchangeable, meaning your code doesn't need any modification to cha
 are updated, meaning you don't get breaking changes in your code.
 
 The SDKs can be found at Github:
-- ResRobot: https://github.com/trafiklab/resrobot-php-sdk
-- SL: https://github.com/trafiklab/sl-php-sdk
+- ResRobot: [https://github.com/trafiklab/resrobot-php-sdk](https://github.com/trafiklab/resrobot-php-sdk)
+- SL: [https://github.com/trafiklab/sl-php-sdk](https://github.com/trafiklab/sl-php-sdk)
 
 Installation is as easy as `composer require trafiklab/resrobot-php-sdk` or `composer require trafiklab/sl-php-sdk`.
 
@@ -267,9 +278,16 @@ table above contains direct links to the specific API documentation. You can sti
 which parameters we send to the APIs and which fields we parse. If you get stuck, you can always reach out to Trafiklab [using
 the Kundo forum](https://kundo.se/org/trafiklabse/).
 
+### Deploying the demo application
+If you want to experiment with our demo application first, you can simply head over to [our Google Assistant demo project](https://github.com/trafiklab/google-assistant-demo/)'
+and press the "deploy on Heroku" button to deploy an instance for free. You can read more detail in the readme of our demo project.
+
 ## Putting it all online
 As DialogFlow needs to send an HTTP request to your server application, your server application needs to be accessible from the internet, either 
 with a static IP address or a domain name.
 
 - You can deploy through Heroku, which offers a free-tier with unlimited duration. See [our tutorial on Heroku](/heroku-free-hosting-with-automatic-deploy) to learn how to set it up.
 - You can host the application on a server or VPS, for example on DigitalOcean
+- You can host the application on a Raspberry Pi in combination with port forwarding on your router. 
+
+After you have deployed your server application, don't forget to update your DialogFlow fulfillment settings!

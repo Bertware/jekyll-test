@@ -10,7 +10,8 @@ featured: false
 hidden: false
 ---
 Free quality hosting is hard to find. However, Heroku offers it for development. In this tutorial we'll explain
- how you can deploy your GitHub project online, for free, without any need for a credit card.
+ how you can deploy your GitHub project online, for free, without any need for a credit card. This way you can test your application with
+ a domain name and a server without any cost.
  
 ## What is Heroku?
 Heroku is a cloud platform that lets anyone build, deliver, monitor and scale apps. The way this works is through _Dynos_. 
@@ -50,7 +51,7 @@ Click the _fork_ button to _fork_ the repository to your own github account
 ![Forking a repository]({{ site.baseurl }}/assets/images/2019-06-11-github-fork.png)
 
 ### 2. Create a new Heroku app
-Head to https://dashboard.heroku.com/. Create an account, or log in if you have one already.
+Head to [dashboard.heroku.com/](https://dashboard.heroku.com/). Create an account, or log in if you have one already.
 After logging in you get the option to create a new app. Choose a name and select the right region. 
 The name will be used as the subdomain for your application later on.
 
