@@ -7,6 +7,22 @@ License: https://www.wowthemes.net/freebies-license/
     html { font-size:18px; } /* Increase the font size on higher resolutions */
     .container {max-width:80%;}
 }
+
+/* raleway-regular - latin */
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/assets/fonts/raleway-v13-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Raleway'), local('Raleway-Regular'),
+    url('/assets/fonts/raleway-v13-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/fonts/raleway-v13-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('/assets/fonts/raleway-v13-latin-regular.woff') format('woff'), /* Modern Browsers */
+    url('/assets/fonts/raleway-v13-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/fonts/raleway-v13-latin-regular.svg#Raleway') format('svg'); /* Legacy iOS */
+}
+
+
 .mainheading {
     padding: 1rem 0rem;
 }
@@ -917,4 +933,8 @@ td, th{
 
 tr:nth-of-type(2n){
     background-color: rgba(0,0,0, 0.03);
+}
+
+.alertbar img {
+    max-height: 24px;
 }
