@@ -60,11 +60,11 @@ The name will be used as the subdomain for your application later on.
 
 Now your app has been created, you can link it with Github. Head over to the _Deploy_ tab, which looks like this.
 
-![Linking with Github]({{ site.baseurl }}/assets/images/2019-06-11-heroku-app-overview.png)
+![Linking with Github]({{ site.baseurl }}/assets/images/2019-06-11-heroku-app-deploy.png)
 
 Select github as deployment method, and pick the repository to which you forked the demo app
 
-![Configure automatic deploys]({{ site.baseurl }}/assets/images/2019-06-11-heroku-github-auto-deploy.png)
+![Configure automatic deploys]({{ site.baseurl }}/assets/images/2019-06-11-heroku-app-deploy-finished.png)
 
 Your project will now deploy automatically when the master branch is updated! Woohoow!
 
